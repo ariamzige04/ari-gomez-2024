@@ -1,0 +1,51 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+// __cabecera
+[class$="__cabecera"] {
+    @include m.seccion--principal;
+    margin-bottom: 5rem;
+    [class$="__contenedor"] {
+        @include m.grid(1,2rem);
+
+        @include m.tablet {
+            @include m.grid(2,2rem);
+        }
+    }
+
+    [class$="__parte-1"] {
+    
+
+    }
+
+    [class$="__parte-2"] {
+        margin: auto;
+    }
+
+    [class$="__titulo"] {
+        @include m.texto-fluido(2rem, 2.5vw);
+        white-space: nowrap;
+
+        [class$="--resaltar"] {
+            display: block;
+            color: v.$naranja;
+            font-size: clamp(5rem, -0.8rem + 6vw, 8rem);
+            
+        }
+        
+    }
+
+    [class$="__parrafo-inicial"] {
+    
+        [class$="--negritas"] {
+    
+
+        }
+    }
+
+    [class$="redes-sociales"] {
+        position: initial;
+        transform: none;
+
+    }
+}

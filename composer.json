@@ -1,0 +1,30 @@
+{
+    "name": "gomez/ecutronic",
+    "description": "Sitio web de Ecutronic",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models",
+            "Classes\\" : "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "ariamzige04",
+            "email": "74326414+ariamzige04@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "vlucas/phpdotenv": "^5.4",
+        "intervention/image": "^2.7",
+        "nesbot/carbon": "^2.66",
+        "paypal/rest-api-sdk-php": "^1.14",
+        "sendinblue/api-v3-sdk": "^8.4",
+        "mailin-api/mailin-api-php": "^1.0",
+        "mailjet/mailjet-apiv3-php": "^1.6"
+    },
+    "prefer-source": true
+}

@@ -1,0 +1,287 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.navegacion {
+    height: 8rem;
+    // background-color: v.$negro;
+    // background-color: transparent;
+    transition: v.$transition;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    $navegacion: &;
+
+    &__color-fondo {//cuando se haga scroll hacia abajo se agrega esta clase y sus estilos
+        background-color: v.$negro;
+        box-shadow: 0 8px 24px rgba(18, 3, 27, 0.33);
+        // box-shadow: v.$box-shadow;
+        #{$navegacion}__enlace {
+            
+            @include m.tablet {
+                color: v.$blanco;
+                &::after {
+                    background-color: v.$naranja;
+                }
+            }  
+        }
+
+        #{$navegacion}__logo {
+            svg {
+                #flecha {
+                    fill: v.$naranja;
+                }
+                #ariweb {
+                    fill: v.$blanco;
+
+                }
+            }
+        }
+
+        #menu-toggle .menu-toggle__span {
+            background-color: v.$blanco;
+        }
+    }
+
+    &__contenedor {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        // height: 5rem;
+        svg {
+            height: 5rem;
+            width: auto;
+                #flecha {
+                    fill: v.$morado;
+                    transition: v.$transition;
+                }
+                #ariweb {
+                    fill: v.$negro;
+                    transition: v.$transition;
+                }
+        }
+    }
+
+    &__ordenar {
+        display: grid;
+        position: absolute;
+        left: 0;
+        top: 8rem;
+        background: v.$blanco;
+        height: calc(100vh - 8rem);
+        width: 100%;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+                    opacity 0.5s ease-in-out;
+        @include m.tablet {
+          all: unset;
+        }
+    }
+
+    &__mostrar {
+        transform: translateX(0);
+        opacity: 1;
+
+    }
+
+    &__principal {
+        @include m.contenedor;
+        display: flex;
+        gap: 3rem;
+        flex-direction: column;
+        margin: 0 auto;
+        width: min(90%,100rem);
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+        @include m.tablet {
+            all: unset;
+            display: flex;
+            gap: 2rem;
+            
+        }
+    }
+
+    &__enlace {
+        color: v.$negro;
+        transition: v.$transition;
+        font-size: 2.5rem;
+        font-weight: v.$bold;
+        padding: 1rem;
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+        border-radius: 5rem;
+        overflow: hidden;
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            transition: v.$transition;
+            width: 0%;
+            height: 100%;
+            background-color: v.$naranja;
+            z-index: -1;
+        }
+
+        &::after {
+            left: 0;
+        }
+
+        &::before {
+            right: 0;
+        }
+
+        &:hover {
+            &::after, &::before {
+                width: 100%;
+            }
+        }
+
+        @include m.tablet {
+            all: unset;
+            padding: 1rem;
+            color: v.$negro;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: v.$transition;
+            position: relative;
+            display: grid;
+            place-content: center;
+            &::after,
+            &::before {
+                all: unset;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: v.$morado;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                transform:scaleX(0);
+                transform-origin:bottom right;
+                transition: v.$transition;
+                
+            }
+            &:hover::after {
+                transform:scaleX(1);
+                transform-origin:bottom left;
+            }
+        }
+    }
+
+
+    .menu-toggle__span {
+        background-color: v.$negro;
+        border-radius: 2px;
+        display: block;
+        transition: 0.35s ease-in-out;
+    }
+    
+    #menu-toggle {
+        border-radius: 5px;
+        cursor: pointer;
+        height: 10rem;
+        position: relative;
+        width: 10rem;
+        transform: scale(0.8) translateX(20%);
+    
+        .menu-toggle__hamburger {
+            height: 100%;
+            position: absolute;
+            width: 100%;
+        
+            .menu-toggle__span {
+            height: 4px;
+            left: 2rem;
+            margin: 1rem 0;
+            position: relative;
+            top: 2.4rem;
+            width: 6rem; // Cambiar el tamaño aquí
+        
+            &:first-child {
+                transition-delay: 0.5s;
+            }
+        
+            &:nth-child(2) {
+                transition-delay: 0.625s;
+            }
+        
+            &:nth-child(3) {
+                transition-delay: 0.75s;
+            }
+            }
+        }
+    
+        .menu-toggle__cross {
+            height: 100%;
+            position: absolute;
+            transform: rotate(45deg);
+            width: 100%;
+        
+            .menu-toggle__span:first-child {
+            height: 0;
+            left: 4.8rem;
+            position: absolute;
+            top: 10%;
+            transition-delay: 0s;
+            width: 4px;
+            }
+        
+            .menu-toggle__span:nth-child(2) {
+            height: 4px;
+            left: 10%;
+            position: absolute;
+            top: 4.8rem;
+            transition-delay: 0.25s;
+            width: 0;
+            }
+        }
+    
+        &.open {
+            .menu-toggle__hamburger .menu-toggle__span {
+            width: 0;
+        
+            &:first-child {
+                transition-delay: 0s;
+            }
+        
+            &:nth-child(2) {
+                transition-delay: 0.125s;
+            }
+        
+            &:nth-child(3) {
+                transition-delay: 0.25s;
+            }
+            }
+        
+            .menu-toggle__cross .menu-toggle__span:first-child {
+            height: 80%;
+            transition-delay: 0.625s;
+            }
+        
+            .menu-toggle__cross .menu-toggle__span:nth-child(2) {
+            transition-delay: 0.375s;
+            width: 80%;
+            }
+        }
+    
+        @media (min-width: 768px) {
+            display: none;
+        }
+    }
+      
+      
+}

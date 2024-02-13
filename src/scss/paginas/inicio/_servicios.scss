@@ -1,0 +1,121 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.servicios {
+    background-color: v.$casi-blanco;
+    // padding: 3rem 0;
+    &__seccion {
+        margin-top: 0;
+        padding: 10rem 0;
+    }
+
+    &__contenedor {
+
+    }
+
+    &__titulo {
+        text-align: center;
+        &--resaltar {
+            color: v.$naranja;
+        }
+    }
+
+
+
+    &__sitios-web {
+        margin-top: 12rem;
+        @include m.grid(1, 2rem);
+        row-gap: 12rem;
+
+        @include m.tablet {
+            @include m.grid(2, 2rem);
+            row-gap: 12rem;
+        }
+
+        @include m.personalizado(900px) {
+            @include m.grid(3, 2rem);
+            row-gap: 2rem;
+        }
+    }
+
+    &__opcion {
+        position: relative;
+    }
+
+    &__numero {
+        font-size: 15rem;
+        position: absolute;
+        z-index: 1;
+        top: -14rem;
+        margin: 0;
+        font-family: v.$fuente-titulos;
+        font-weight: v.$black;
+        color: v.$morado;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &__contenido {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        // background-color: lighten($color: v.$blanco, $amount: 20);
+        background-color: rgba(v.$blanco, .55);
+        backdrop-filter: blur(8px);
+        // mix-blend-mode: darken;
+        padding: 2rem 1rem;
+        border-radius: .5rem;
+        position: relative;
+        z-index: 10;
+        box-shadow: v.$box-shadow;
+        transition: v.$transition;
+        transform: translateY(0);
+        &:hover {
+            transform: translateY(-5rem);
+        }
+    }
+
+    &__nombre {
+        font-family: v.$fuente-principal;
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: v.$black;
+    }
+
+    &__caracteristicas {//ul
+        list-style-type: none;
+        padding-left: 0;
+        margin: 1rem auto 1rem 0;//esto es para alinarlo a la izquierda 
+    }
+
+    &__descripcion {//li
+        position: relative;
+        padding-left: 2rem; /* Espacio para la línea vertical */
+        margin-bottom: 0.5rem; /* Espacio entre elementos de la lista */
+        left: -1rem;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 1rem; /* Ancho de la línea vertical */
+            background-color: v.$naranja; /* Color de la línea vertical */
+        }
+
+        &--modificador {
+            &::before {
+                background-color: v.$morado; /* Color de la línea vertical */
+            }
+        }
+    }
+
+    &__boton--naranja {
+        // transform: scale(.8);
+        white-space: nowrap;
+    }
+
+}

@@ -1,0 +1,77 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.inicio {
+    // background-color: v.$naranja;
+    min-height: 50rem;
+    height: 100vh;
+    max-height: 120rem;
+
+    @include m.fondo-diseño(v.$naranja);
+    // background: url(../img/rayas-fondo-textura.svg) center center / cover no-repeat, v.$naranja;
+
+    &__contenedor {
+        height: 100%;
+        display: flex;
+        // align-items: baseline;
+        align-items: center;
+        margin: auto;
+        position: relative;
+        
+        
+    }
+
+    &__contenido {
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+        // margin-top: 10rem;
+        @include m.tablet {
+            width: 60%;
+            // margin-top: 0;
+        }
+    }
+
+    &__titulo {
+        @include m.texto-fluido(2rem, 2.5vw);
+        @include m.tablet {
+            white-space: nowrap;
+        }
+        &--resaltar {
+            // font-size: 6rem;
+            // @include m.texto-fluido(4rem, 15vw);
+            font-size: clamp(4rem, -0.8rem + 15vw, 8rem);
+            color: v.$morado;
+            display: block;
+        }
+    }
+
+    &__parrafo {
+        &--negritas {
+
+        }
+    }
+
+    &__imagen-contenedor {
+        display: none;
+        @include m.tablet {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: -5%;
+            width: 55%;
+            height: calc(100% - 10rem);
+        }
+        img {
+
+            @include m.tablet {
+                position: absolute;
+                bottom: 0;
+                width: auto;
+                width: 100%;
+                max-height: 53rem;
+            }
+        }
+    }
+
+}

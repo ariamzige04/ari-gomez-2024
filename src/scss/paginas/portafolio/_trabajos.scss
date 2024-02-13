@@ -1,0 +1,79 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.trabajos {
+    // $trabajos: &;
+    // &:nth-child(odd) #{trabajos}__sitio-web {
+    //     grid-template-columns: 40% 60%;
+    // }
+    &__contenedor {
+
+    }
+
+    &__titulo {
+        text-align: center;
+        &--resaltar {
+            color: v.$naranja;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        gap: 5rem;
+        margin-top: 5rem;
+    }
+
+    &__sitio-web {
+        display: grid;
+        grid-gap: 1rem;
+        @include m.tablet {
+            grid-gap: 2rem;
+            grid-template-columns: 60% 40%;
+            &:nth-child(even) {
+                grid-template-columns: 40% 60%;
+          
+                .trabajos__imagen {
+                  grid-column: 2;
+                }
+          
+                .trabajos__contenido {
+                  grid-column: 1;
+                  grid-row: 1;
+                }
+            }
+        }
+    }
+
+    &__imagen {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    &__contenido {
+        display: flex;
+        /* place-content: center; */
+        /* width: 100%; */
+        justify-content: center;
+        align-items: baseline;
+        flex-direction: column;
+    }
+
+    &__nombre {
+        font-size: 2.2rem;
+        font-family: v.$fuente-principal;
+        text-transform: inherit;
+        margin: 2rem 0 0 0;
+        // font-weight: v.$bold;
+        @include m.tablet {
+            margin: 0;
+        }
+    }
+
+    &__parrafo {
+
+    }
+
+}

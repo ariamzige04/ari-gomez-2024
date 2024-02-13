@@ -1,0 +1,65 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.portafolio {
+    padding: 5rem 0;
+    @include m.fondo-diseño(v.$naranja);
+
+    &__contenedor {
+
+    }
+
+    &__contenido {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        @include m.tablet {
+            width: 60%;
+        }
+    }
+
+    &__titulo {
+        text-align: center;
+        &--resaltar {
+            color: v.$morado;
+        }
+    }
+
+    &__parrafo {
+        @include m.alinear-texto;
+
+
+    }
+
+    &__sitios-web {
+        overflow: hidden;
+        margin-top: 2.5rem;
+        // padding: 3rem 0;
+        position: relative;//esto es para que funcione bien el carrusel junto con las flechas y la pginacion
+
+        // /* Cambiar color de las flechas */
+        // .swiper-button-next,
+        // .swiper-button-prev {
+        //     color: v.$morado;
+        // }
+
+        // /* Cambiar color de la paginación */
+        // .swiper-pagination-bullet {
+        //     background-color: v.$morado;
+        // }
+
+        // /* Cambiar color del paginador activo */
+        // .swiper-pagination-bullet-active {
+        //     background-color: v.$morado;
+        // }
+
+        // .swiper-pagination {
+        //     bottom: -1rem;
+        // }
+
+    }
+
+}

@@ -1,0 +1,85 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: v.$fuente-principal;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: v.$negro;
+}
+a {
+    text-decoration: none;
+}
+img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+::selection {
+    background-color: lighten(v.$naranja, 10);
+    color: v.$negro;
+}
+
+//si la clase termina en __contenedor
+[class$="__contenedor"] {
+    @include m.contenedor;
+}
+
+[class$="__contenedor-chico"] {
+    @include m.contenedor-chico;
+}
+
+// __seccion
+[class$="__seccion"] {
+    @include m.seccion;
+}
+
+// __seccion
+[class$="__seccion--principal"] {
+    @include m.seccion--principal;
+}
+
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.pantalla-ocultar-contenido {
+    position: fixed;
+    top: 0;
+    background-color: v.$negro-transparente;
+    height: 100%;
+    width: 100%;
+    transition: v.$transition;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+
+}
+
+.pantalla-ocultar-contenido--admin {
+    @extend .pantalla-ocultar-contenido;
+}
+
+.pantalla-mostrar-contenido {
+    opacity: 1;
+    visibility: visible;
+}
+
+.swal2-popup {
+    font-size: 2rem!important;
+}
+
+.grecaptcha-badge {
+    display: none!important;
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ariweb.rf.gd/sitemap.xml

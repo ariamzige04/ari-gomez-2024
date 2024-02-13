@@ -1,0 +1,127 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.formulario {
+    width: 100%;
+    margin-top: 3rem;
+    &__campo {
+        display: grid;
+        gap: .5rem;
+        margin-bottom: 1.5rem;
+    }
+    &__legend {
+        @include m.headings;
+        font-size: 3.6rem;
+    }
+    &__label {
+        font-weight: v.$bold;
+        color: lighten(v.$negro, 10);
+        // font-size: 2rem;
+
+        &--terminos {
+            font-size: 1.4rem;
+        }
+
+        &::after {
+            content: '*';
+            color: v.$rojo;
+        }
+
+        &--no-obligatorio {
+            &::after {
+                content: '';
+            }
+        }
+    }
+
+    &__input {
+        all: unset;
+        width: calc(100% - 3.2rem);
+        padding: 1rem 1.5rem;
+        border: 1px solid lighten(v.$negro, 10);
+        border-radius: .5rem;
+        transition: v.$transition;
+        // font-size: 2rem;    
+        color: v.$negro;
+
+        &::placeholder {
+            color: lighten(v.$negro, 10);
+        }
+
+        &:focus {
+            border-color: v.$morado;
+        }
+
+        &--terminos {
+            accent-color: v.$morado;
+        }
+    }
+
+    &__textarea {
+        @extend .formulario__input;
+        // padding: 0;
+        height: 15rem;
+        // overflow: auto;
+    }
+
+    &__terminos {
+        display: block;
+        margin-bottom: 4rem;
+    }
+
+    &__enlace {
+        &--terminos {
+            color: v.$morado;
+            transition: v.$transition;
+            &:hover {
+                color: darken(v.$morado, 20);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__enlace-olvide {
+        @extend .formulario__enlace--terminos;
+        margin: 2rem 0 4rem;
+        display: block;    
+    }
+
+    &__boton--naranja {
+
+        // &--block {
+        //     width: fit-content;
+        // }
+    }
+
+    
+
+
+    &__error {
+        // @extend .alerta;
+        // @extend .alerta__error;
+        padding: .5rem 1rem .5rem 3rem;
+        text-transform: uppercase;
+        // margin: 1.5rem 0;
+        font-size: 1.2rem;
+        font-weight: v.$bold;
+        line-height: 1;
+        // display: flex;
+        // align-items: center;
+        background-color: lighten(v.$rojo, 30%);
+        border-left: .5rem solid v.$rojo;
+        color: v.$rojo;
+        display: none;
+        font-size: 1.2rem;
+
+        i {
+            margin-right: .5rem;
+            font-size: 1.6rem;
+        }
+    }
+
+    &__error-validacion {
+        @extend .formulario__error;
+        display: block;
+    }
+
+}

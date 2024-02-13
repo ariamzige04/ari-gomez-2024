@@ -1,0 +1,148 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.navegacion-registro {
+    position: fixed;
+    right: 5%;
+    background-color: v.$blanco;
+    top: 16rem;
+    width: 75%;
+    box-shadow: v.$box-shadow;
+    padding: 1rem 0;
+    transition: v.$transition;
+    z-index: 1000;
+    // animaciones
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+
+    &--mostrar {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @include m.tablet {
+        width: 35%;
+    }
+    &__contenedor {
+        display: grid;
+        gap: 2rem;
+    }
+
+    &__enlace {
+        all: unset;
+        color: v.$negro;
+        transition: v.$transition;
+        padding: 2rem;
+        display: flex;
+        gap: 1rem;
+        border-radius: 4rem;
+        font-weight: v.$bold;
+        width: calc(100% - 4rem);
+        &:hover {
+            background-color: v.$naranja;
+        }
+    }
+
+    &__icono {
+
+    }
+
+
+    &__boton {
+        all: unset;
+        position: fixed;
+        right: 5%;
+        background-color: v.$gris-claro;
+        top: 10rem;
+        z-index: 100;
+        cursor: pointer;
+        // padding: 2rem;
+        border-radius: 1rem;
+        width: 6rem;
+        height: 3rem;
+        // aspect-ratio: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+
+        i {
+            font-size: 2.5rem;
+            height: fit-content;
+        }
+    }
+
+}
+
+
+.registrado {
+    &__titulo {
+        font-family: v.$fuente-principal;
+        text-transform: none;
+        text-align: center;
+        &::first-letter {
+            color: v.$morado;
+        }
+
+        &--exito {
+            font-size: 2rem;
+            background-color: lighten(v.$verde, 40);
+            color: v.$verde;
+            text-align: center;
+            padding: 1rem;
+            &::first-letter {
+                color: v.$verde;
+            }
+        }
+    }
+
+    &__requerimiento-parrafo {
+        // white-space: pre-wrap;
+        white-space-collapse: preserve-breaks;
+    }
+
+    &__precio-titulo{
+        font-weight: v.$bold;
+        &::first-letter {
+            color: v.$morado;
+        }
+    }
+    
+    &__precio {
+        margin-top: 1rem;
+        font-size: 4rem;
+        font-weight: v.$bold;
+        letter-spacing: -2px;
+        // color: v.$morado;
+        &--moneda {
+            font-size: 1rem;
+
+        }
+    }
+
+
+    &__parrafo {
+        &--negritas {
+            
+        }
+    }
+
+    &__exito {
+        background-color: v.$verde;
+        @include m.alertas;
+    }
+
+    &__pendiente {
+        background-color: #ffb732;
+        @include m.alertas;
+        // color: v.$blanco;
+    }
+
+    &__null {
+        background-color: v.$casi-blanco;
+        @include m.alertas;
+
+    }
+}

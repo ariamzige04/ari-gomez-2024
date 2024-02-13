@@ -1,0 +1,41 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.mision {
+    @include m.fondo-diseño(v.$naranja);
+    padding: 5rem 0;
+    &__contenedor  {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__imagen {
+        width: 10rem;
+        // height: ;
+    }
+
+    &__titulo {
+        margin: 2rem 0 0;
+        &--resaltar {
+            color: v.$morado;
+        }
+    }
+
+    &__parrafo {
+        @include m.alinear-texto;
+        @include m.tablet {
+            width: 70%;
+        }
+        &--negritas {
+            
+        }
+    }
+
+    &__boton--morado {
+
+    }
+
+}

@@ -1,0 +1,303 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+@mixin xl_desktop {
+    @media (min-width: v.$xl_desktop) {
+        @content;
+    }
+}
+
+@mixin solo-telefono {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin personalizado($medida) {
+    @media (min-width: $medida) {
+      @content;
+    }
+}
+
+@mixin fondo-diseño($color) {
+    background: url(../img/rayas-fondo-textura.svg) center center / cover no-repeat, $color;
+    background-size: 200% 200%;
+    width: 100%;
+}
+
+@mixin alinear-texto {
+    text-align: left;
+    @include tablet {
+        text-align: center;
+    }
+}
+
+@mixin margen-padding {
+    // padding: 14rem 0 2rem 0;
+    margin-top: 8rem;
+    padding-top: 6rem;
+}
+
+@mixin margen-padding-admin {
+    @include margen-padding;
+    width: 90%;
+    @media (min-width: 945px) {
+        margin-right: 5%;
+        width: 65%;
+        max-width: 80rem;
+        margin-left: 30%;
+    }
+}
+
+@mixin fondo-negro-clip {
+    background-color: v.$negro;
+    clip-path: polygon(0% 0%, 100% 0, 100% 50%, 75% 100%, 0% 100%);
+    @include tablet {
+        clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
+    }
+}
+
+@mixin barra-roja-dos {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: v.$rojo;
+    clip-path: polygon(20% 0, 40% 0, 0 20%, 0 10%);
+
+    @include tablet {
+        clip-path: polygon(95% 0, 100% 0, 100% 10%, calc(60% - 2rem) 100%, calc(50% - 2rem) 100%);
+        // background-color: v.$rojo;
+    }
+}
+
+@mixin barra-roja {
+    background-color: v.$rojo;
+    clip-path: polygon(100% 80%, 100% 60%, 80% 100%, 90% 100%);
+    @include tablet {
+        clip-path: polygon(100% 20%, 100% 40%, 70% 100%, 60% 100%);
+    }
+}
+
+@mixin boton-principal($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 2.3rem 8rem 2.3rem 6rem;
+    color: $colorTexto;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4rem;
+    transition: v.$transition;
+    text-align: center;
+    width: auto;
+    display: inline-block;
+    position: relative;
+
+    i {
+        color: $colorTexto;
+        font-size: 3rem;
+        position: absolute;
+        top: 50%;
+        right: 4rem;
+        transform: translateY(-50%);
+    }
+
+    &:hover {
+        background-color: darken( $bgColor, 20% );
+        cursor: pointer;
+    }
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin contenedor {
+    width: min(90%, 100rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-mediano {
+    width: min(90%, 80rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-chico {
+    width: min(90%, 60rem);
+    margin: 0 auto;
+}
+
+@mixin seccion {
+    margin-top: 10rem;
+}
+
+@mixin seccion--principal {
+    margin-top: 16rem;
+}
+
+@mixin headings {
+    font-family: v.$fuente-titulos;
+    font-weight: v.$black;
+    margin: 2rem 0;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1;
+    @include tablet {
+        letter-spacing: -2px;
+        
+    }
+}
+
+@mixin alertas {
+    display: inline-block;
+    padding: 1rem 7rem;
+    border-radius: 1rem;
+    margin: 0;
+    font-weight: v.$bold
+}
+
+@mixin nombre-pagina {
+    @include headings;
+    margin: 3rem 0 3rem 0;
+    // text-align: center;
+}
+// @mixin descripcion-pagina {
+//     text-align: center;
+//     font-size: 1.8rem;
+//     font-weight: v.$delgada;
+//     color: v.$gris-oscuro;
+//     margin-bottom: 5rem;
+// }
+@mixin texto-fluido($min, $max) {
+    font-size: clamp($min, -0.8rem + 10vw ,$max);//el -0.8rem es que le deja un margen a la derecha
+}
+@mixin texto-degradado($inicio, $final) {
+    background: linear-gradient(to right, $inicio, $final);
+    background-clip: text;
+    color: transparent;
+}
+@mixin logo {
+    color: v.$blanco;
+    text-align: center;
+    margin-bottom: 2rem;
+    white-space: nowrap;
+    @include desktop {
+        text-align: left;
+        margin: 0;
+    }
+}
+@mixin menu-social($color, $size) {
+
+    &__enlace {
+
+        &::before {
+            color: $color;
+            font-size: $size;
+            display: inline-block;
+            font-style: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 6 Brands";
+        }
+
+        &[href*="facebook.com"]::before {
+            content: "\f39e";
+        }
+        &[href*="github.com"]::before {
+            content: "\f09b";
+        }
+        
+        &[href*="tiktok.com"]::before {
+            content: "\e07b";
+        }
+        &[href*="instagram.com"]::before {
+            content: "\f16d";
+        }
+        &[href*="youtube.com"]::before {
+            content: "\f167";
+        }
+        &[href*="twitter.com"]::before {
+            content: "\f099";
+        }
+    }
+
+    &__ocultar {
+        display: none;
+    }
+}
+
+@mixin enlace{
+    all: unset;
+    color: v.$blanco;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: v.$bold;
+
+    &:hover {
+        color: v.$azul;
+        cursor: pointer;
+    }
+}
+
+@mixin shadow {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+@mixin reset-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin tags {
+    @include reset-lista;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    > li {
+        background-color: v.$azul;
+        padding: 1rem;
+        border-radius: .5rem;
+        font-size: 1.4rem;
+        font-weight: v.$bold;
+        color: v.$blanco;
+    }
+}
+
+@mixin card {
+    border: 1px solid lighten(v.$gris, 10);
+    padding: 3rem;
+
+    &__nombre {
+        font-weight: v.$black;
+        font-size: 2.6rem;
+        margin: 2rem 0;
+    }
+}
+
+@mixin bg-gradient($bg_color) {
+    background-image: linear-gradient(to left top, $bg_color, lighten($bg_color, 15%));
+}

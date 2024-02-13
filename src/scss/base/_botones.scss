@@ -1,0 +1,35 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+//si la clase termina en __
+[class$="boton--morado"] {
+    @include m.boton-principal(v.$morado, v.$blanco);
+    // width: auto;
+}
+
+//si la clase termina en __
+[class$="boton--naranja"] {
+    @include m.boton-principal(v.$naranja, v.$negro);
+    &:hover {
+        background-color: lighten(v.$naranja, 10%);
+    }
+}
+
+//si la clase termina en __
+[class$="boton--rojo"] {
+    @include m.boton-principal(v.$rojo, v.$blanco);
+    &:hover {
+        background-color: lighten(v.$rojo, 10%);
+    }
+}
+
+.swal2-confirm.swal2-styled {
+    background-color: v.$naranja!important;
+    color: v.$negro!important;
+    font-weight: v.$bold!important;
+}
+
+// .swal2-confirm.swal2-styled {
+
+// }

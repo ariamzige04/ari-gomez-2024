@@ -1,0 +1,21 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.terminos {
+    
+
+    &__titulo {
+        &--secundario {
+            font-size: 2rem;
+            font-family: v.$fuente-principal;
+        }
+    }
+
+    &__parrafo {
+
+    }
+
+    &__enlace {
+        color: v.$morado;
+    }
+}

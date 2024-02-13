@@ -1,0 +1,40 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.redes-sociales {
+    bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+
+    @include m.tablet {
+        transform: translateX(-50%);
+        left: 50%;
+        
+    }
+    $redes-sociales: &;
+
+    &__enlace {
+        width: 6rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: v.$transition;
+        display: grid;
+        place-content: center;
+        &:hover {
+            background-color: v.$morado;
+            #{$redes-sociales}__icono {
+                color: v.$blanco;
+            }
+        }
+    }
+
+    &__icono {
+        color: v.$negro;
+        font-size: 2.5rem;
+    }
+}

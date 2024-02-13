@@ -1,0 +1,9 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Permitir acceso al archivo robots.txt
+RewriteRule ^robots\.txt$ - [L]
+
+RewriteRule ^$ public/index.php [L]
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]

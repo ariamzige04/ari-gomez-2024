@@ -1,0 +1,62 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.auth {
+    height: calc(100vh - 24rem);
+    // overflow: auto;
+    &__contenedor-chico {
+        
+    }
+
+    &__titulo {
+        @include m.texto-fluido(2rem, 2.5vw);
+        white-space: nowrap;
+        margin-bottom: 3rem;
+        &--resaltar {
+            display: block;
+            color: v.$naranja;
+            // font-size: clamp(5rem, -0.8rem + 6vw, 8rem);
+            @include m.texto-fluido(5rem, 8rem);
+        }
+
+        &--exito, &--error {
+        @include m.texto-fluido(2rem, 2.5vw);
+        }
+
+        &--exito {
+            color: v.$verde;
+        }
+
+        &--error {
+            color: v.$rojo;
+        }
+    }
+
+    &__texto {
+        &--negritas {
+
+        }
+    }
+    
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    &__enlace {
+        color: v.$morado;
+        transition: v.$transition;
+        cursor: pointer;
+        padding: 1rem 0;
+        &:hover {
+            color: darken(v.$morado, 20);
+            text-decoration: underline;
+        }
+    }
+
+    &--centrar {
+        margin-top: 3rem;
+    }
+}
