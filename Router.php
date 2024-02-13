@@ -59,7 +59,7 @@ class Router
         //     // $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
 
         // }
-
+// commit 
         //video 693 udemy
         //str_contains es de PHP8
         //strpos tiene mas soporte
